@@ -192,7 +192,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Alamat</h4>
-                            <p>Jl. Teknologi No. 123<br>Jakarta Selatan, 12345</p>
+                            <p>Jl. Jamin Ginting, Medan Tuntungan 22A<br>Medan, 22111</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" onsubmit="sendToWhatsApp(event)">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Nama Lengkap" required>
                         </div>
@@ -248,10 +248,9 @@
                 <div class="footer-social">
                     <h4>Ikuti Kami</h4>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/joki.inlek/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://lynk.id/joki.inlek" class="social-link"><i class="fas fa-link"></i></a>
+                        <a href="https://wa.me/6285157752859?text=Saya%20Mau%20Joki%20Game" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -262,5 +261,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Yo joki.inlek\nSaya ${name} ingin menjoki\n\nemail : ${email}\nTelp : ${phone}\n\n${message}`;
+            
+            const whatsappURL = `https://wa.me/6285157752859?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+    </script>
 </body>
 </html>
